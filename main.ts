@@ -11,7 +11,7 @@ export class Bar {
     public getNombre(): string {
         return this.nombre;
     }
-    public setCapacidad(cap: number) {
+    public setCapacidad(cap: number): void {
         this.capacidad = cap;
     }
     public getCapacidad(): number {
@@ -27,13 +27,13 @@ export class BarMan {
         this.nombre = nomb;
         this.apellido = apellid;
     }
-    public setNombre(nomb: string) {
+    public setNombre(nomb: string):void {
         this.nombre = nomb;
     }
     public getNombre(): string {
         return this.nombre;
     }
-    public setApellido(apellid: string) {
+    public setApellido(apellid: string): void {
         this.apellido = apellid;
     }
     public getApellido(): string {
@@ -51,19 +51,19 @@ export class Trago {
         this.color = colr;
         this.cantidad = cant;
     }
-    public setNombre(nombr: string) {
+    public setNombre(nombr: string): void {
         this.nombre = nombr;
     }
     public getNombre(): string {
         return this.nombre;
     }
-    public setColor(colr: string) {
+    public setColor(colr: string): void {
         this.color = colr;
     }
     public getColor(): string {
         return this.color;
     }
-    public setCantidad(cant: number) {
+    public setCantidad(cant: number): void {
         this.cantidad = cant;
     }
     public getCantidad(): number {
