@@ -17,12 +17,15 @@ export class Curso{
     private nombre:string;
     private precio:number;
     private descripcion:string;
-    private docente:Docente;
-    public constructor(nom:string,prec:number,descr:string,doc:Docente){
+    private docente:Array<Docente>;
+    public constructor(nom:string,prec:number,descr:string){
         this.nombre=nom;
         this.precio=prec;
         this.descripcion=descr;
-        this.docente=doc;
+        this.docente=[];
+    }
+    public getPrecio():number{
+        return this.precio;
     }
 }
 export class Docente{
@@ -30,13 +33,13 @@ export class Docente{
     private apellido:string;
     private correo:string;
     private profesion:string;
-    private direccion:Direccion;
-    public constructor(nom:string,ape:string,corr:string,profs:string,dir:Direccion){
+    private direccion:Array<Direccion>;
+    public constructor(nom:string,ape:string,corr:string,profs:string){
         this.nombre=nom;
         this.apellido=ape;
         this.correo=corr;
         this.profesion=profs;
-        this.direccion=dir;
+        this.direccion=[];
 
     }
 } 
@@ -44,12 +47,12 @@ export class Estudiante{
     private nombre:string;
     private apellido:string;
     private correo:string;
-    private direccion:Direccion;
-    public constructor(nom:string,ape:string,corr:string,direc:Direccion){
+    private direccion:Array<Direccion>;
+    public constructor(nom:string,ape:string,corr:string){
         this.nombre=nom;
         this.apellido=ape;
         this.correo=corr;
-        this.direccion=direc;
+        this.direccion=[];
     }
 }
 export class Direccion{
@@ -71,23 +74,48 @@ export class CompraCurso{
         this.estudiante=est;
         this.fecha=fec;
     }
+    public getCurso():Curso{
+        return this.curso;
+    }
 }
+export class PlataformaEducativa{
+    private nombre:string;
+    private registro:Array<CompraCurso>;
+    public constructor(nom:string){
+        this.nombre=nom;
+        this.registro=[];
+    }
+public getNombre():string{
+    return this.nombre;
+}
+public RegistrarCompraCurso(CursoComprado:CompraCurso):void{
+    this.registro.push(CursoComprado);
+}
+public calGananciaTotal(){
+    var total= 0;
+    for(const compracurso of this.registro){
+        var curso = compracurso.getCurso();
+        total += curso.getPrecio();
+    }
+    return total;
+}
+} 
 let direccion1: Direccion=new Direccion("Cbba","Obrero","Colquiri");
 console.log(direccion1);
-let docente1: Docente=new Docente("Edwin","Calla","edc@gmail.com","Maestria",direccion1)
+let docente1: Docente=new Docente("Edwin","Calla","edc@gmail.com","Maestria")
 console.log(docente1);
-let curso1: Curso=new Curso("Fundamentos",150,"curso acelerado",docente1);
+let curso1: Curso=new Curso("Fundamentos",150,"curso acelerado");
 console.log(curso1);
-let curso2: Curso= new Curso("Variables",180,"tener minimo conocimiento",Docente);
+let curso2: Curso= new Curso("Variables",180,"tener minimo conocimiento");
 console.log(curso2);
-let curso3: Curso= new Curso("teoria",120,"bastante lectura",Docente);
+let curso3: Curso= new Curso("teoria",120,"bastante lectura");
 console.log(curso3);
-let curso4: Curso= new Curso("Node.js",150,"minimo conocimiento en javascript",Docente);
+let curso4: Curso= new Curso("Node.js",150,"minimo conocimiento en javascript");
 console.log(curso4);
-let curso5: Curso= new Curso("Typescript",200,"capacidad de analizar",Docente);
+let curso5: Curso= new Curso("Typescript",200,"capacidad de analizar");
 console.log(curso5);
 
-let estudiante1: Estudiante=new Estudiante("Franz","Ventura","fr@gmail.com",direccion1);
+/*let estudiante1: Estudiante=new Estudiante("Franz","Ventura","fr@gmail.com",direccion1);
 console.log(estudiante1);
 let estudiante2: Estudiante= new Estudiante("Verito","Patiño","ver@gmail.com",[]);
 console.log(estudiante2);
@@ -106,8 +134,7 @@ console.log(estudiante8);
 let estudiante9: Estudiante=new Estudiante("Camila","Quiroga","cq@gmail.com",[]);
 console.log(estudiante9);
 let estudiante10: Estudiante=new Estudiante("Marco","Miranda","mm@gmail.com",[]);
-console.log(estudiante10);
-
+console.log(estudiante10);*/
 
 
 

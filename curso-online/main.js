@@ -16,32 +16,35 @@ exports.__esModule = true;
  * Para los profesores en particular se necesita guardar su profesion.
  */
 var Curso = /** @class */ (function () {
-    function Curso(nom, prec, descr, doc) {
+    function Curso(nom, prec, descr) {
         this.nombre = nom;
         this.precio = prec;
         this.descripcion = descr;
-        this.docente = doc;
+        this.docente = [];
     }
+    Curso.prototype.getPrecio = function () {
+        return this.precio;
+    };
     return Curso;
 }());
 exports.Curso = Curso;
 var Docente = /** @class */ (function () {
-    function Docente(nom, ape, corr, profs, dir) {
+    function Docente(nom, ape, corr, profs) {
         this.nombre = nom;
         this.apellido = ape;
         this.correo = corr;
         this.profesion = profs;
-        this.direccion = dir;
+        this.direccion = [];
     }
     return Docente;
 }());
 exports.Docente = Docente;
 var Estudiante = /** @class */ (function () {
-    function Estudiante(nom, ape, corr, direc) {
+    function Estudiante(nom, ape, corr) {
         this.nombre = nom;
         this.apellido = ape;
         this.correo = corr;
-        this.direccion = direc;
+        this.direccion = [];
     }
     return Estudiante;
 }());
@@ -61,40 +64,66 @@ var CompraCurso = /** @class */ (function () {
         this.estudiante = est;
         this.fecha = fec;
     }
+    CompraCurso.prototype.getCurso = function () {
+        return this.curso;
+    };
     return CompraCurso;
 }());
 exports.CompraCurso = CompraCurso;
+var PlataformaEducativa = /** @class */ (function () {
+    function PlataformaEducativa(nom) {
+        this.nombre = nom;
+        this.registro = [];
+    }
+    PlataformaEducativa.prototype.getNombre = function () {
+        return this.nombre;
+    };
+    PlataformaEducativa.prototype.RegistrarCompraCurso = function (CursoComprado) {
+        this.registro.push(CursoComprado);
+    };
+    PlataformaEducativa.prototype.calGananciaTotal = function () {
+        var total = 0;
+        for (var _i = 0, _a = this.registro; _i < _a.length; _i++) {
+            var compracurso = _a[_i];
+            var curso = compracurso.getCurso();
+            total += curso.getPrecio();
+        }
+        return total;
+    };
+    return PlataformaEducativa;
+}());
+exports.PlataformaEducativa = PlataformaEducativa;
 var direccion1 = new Direccion("Cbba", "Obrero", "Colquiri");
 console.log(direccion1);
-var docente1 = new Docente("Edwin", "Calla", "edc@gmail.com", "Maestria", direccion1);
+var docente1 = new Docente("Edwin", "Calla", "edc@gmail.com", "Maestria");
 console.log(docente1);
-var curso1 = new Curso("Fundamentos", 150, "curso acelerado", docente1);
+var curso1 = new Curso("Fundamentos", 150, "curso acelerado");
 console.log(curso1);
-var curso2 = new Curso("Variables", 180, "tener minimo conocimiento", Docente);
+var curso2 = new Curso("Variables", 180, "tener minimo conocimiento");
 console.log(curso2);
-var curso3 = new Curso("teoria", 120, "bastante lectura", Docente);
+var curso3 = new Curso("teoria", 120, "bastante lectura");
 console.log(curso3);
-var curso4 = new Curso("Node.js", 150, "minimo conocimiento en javascript", Docente);
+var curso4 = new Curso("Node.js", 150, "minimo conocimiento en javascript");
 console.log(curso4);
-var curso5 = new Curso("Typescript", 200, "capacidad de analizar", Docente);
+var curso5 = new Curso("Typescript", 200, "capacidad de analizar");
 console.log(curso5);
-var estudiante1 = new Estudiante("Franz", "Ventura", "fr@gmail.com", direccion1);
+/*let estudiante1: Estudiante=new Estudiante("Franz","Ventura","fr@gmail.com",direccion1);
 console.log(estudiante1);
-var estudiante2 = new Estudiante("Verito", "Patiño", "ver@gmail.com", []);
+let estudiante2: Estudiante= new Estudiante("Verito","Patiño","ver@gmail.com",[]);
 console.log(estudiante2);
-var estudiante3 = new Estudiante("Jhonny", "Paz", "jh@gmail.com", []);
+let estudiante3: Estudiante=new Estudiante("Jhonny","Paz","jh@gmail.com",[]);
 console.log(estudiante3);
-var estudiante4 = new Estudiante("Juan", "Meneces", "jm@gmail.com", []);
+let estudiante4: Estudiante=new Estudiante("Juan","Meneces","jm@gmail.com",[]);
 console.log(estudiante4);
-var estudiante5 = new Estudiante("Sahori", "Medina", "sm@gmail.com", []);
+let estudiante5: Estudiante=new Estudiante("Sahori","Medina","sm@gmail.com",[]);
 console.log(estudiante5);
-var estudiante6 = new Estudiante("Cristian", "Montaño", "cm@gmail.com", []);
+let estudiante6: Estudiante=new Estudiante("Cristian","Montaño","cm@gmail.com",[]);
 console.log(estudiante6);
-var estudiante7 = new Estudiante("Dorian", "Nuñez", "db@gmail.com", []);
+let estudiante7: Estudiante=new Estudiante("Dorian","Nuñez","db@gmail.com",[]);
 console.log(estudiante7);
-var estudiante8 = new Estudiante("Favian", "Centellas", "fc@gmail.com", []);
+let estudiante8: Estudiante=new Estudiante("Favian","Centellas","fc@gmail.com",[]);
 console.log(estudiante8);
-var estudiante9 = new Estudiante("Camila", "Quiroga", "cq@gmail.com", []);
+let estudiante9: Estudiante=new Estudiante("Camila","Quiroga","cq@gmail.com",[]);
 console.log(estudiante9);
-var estudiante10 = new Estudiante("Marco", "Miranda", "mm@gmail.com", []);
-console.log(estudiante10);
+let estudiante10: Estudiante=new Estudiante("Marco","Miranda","mm@gmail.com",[]);
+console.log(estudiante10);*/
