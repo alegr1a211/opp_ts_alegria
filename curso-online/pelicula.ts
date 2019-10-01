@@ -11,32 +11,6 @@
  */
 export class Tienda{
     private nombre:string;
-    private cliente:string;
-    private productos:Array<ListProductos>;
-    public constructor(nom:string,cli:string){
-        this.nombre=nom;
-        this.cliente=cli;
-        this.productos=[];
-    }
-    public getProductos():ListProductos{
-        return this.productos.push('dvds','cds','blu-ray');
-    }
-    public ProductosListProductos(ProductosVendidos:ListProductos):void{
-
-    }
+    
 }
-
-/*export class Tienda{
-    private cliente:string;
-    private precio:number;
-    public constructor(clie:string){
-        this.cliente=clie;
-    }
-    precioProducto(dinero:number){
-        this.precio=dinero;
-    }
-}
-export class Producto extends Tienda{
-    constructor()
-}
-}
+    
