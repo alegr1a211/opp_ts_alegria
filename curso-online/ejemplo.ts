@@ -41,5 +41,22 @@ export class Sandia extends Fruta{
         this.crecimiento=crec;
     }
 }
-let fruta1: Fruta= new Mandarina('mandarina1','frio','vitC.antioxidante','anaranjado',8,'arboles');
+let fruta1: Fruta = new Mandarina('mandarina1','frio','vitC.antioxidante','anaranjado',8,'arboles');
 console.log(fruta1);
+let fruta2: Fruta = new Manzana('manzana1','enero','vitE.vitC','rojo',10,'arboles');
+console.log(fruta2);
+let fruta3: Fruta = new Sandia('sandia1','primavera','vitA.B6','verde',12,'sobre tierra');
+console.log(fruta3);
+
+var resultado:boolean = fruta1 instanceof Fruta;
+console.log(resultado);
+//var resultado1:boolean = Manzana instanceof Fruta;
+//console.log(resultado1);
+var resultado2: boolean = fruta3 instanceof Sandia;
+console.log(resultado2);
+//var resultado3:boolean = Sandia instanceof Sandia;
+//console.log(resultado3);
+//var resultado4: boolean = Mandarina instanceof Sandia;
+//console.log(resultado4);
+
+

@@ -60,3 +60,17 @@ var Sandia = /** @class */ (function (_super) {
 exports.Sandia = Sandia;
 var fruta1 = new Mandarina('mandarina1', 'frio', 'vitC.antioxidante', 'anaranjado', 8, 'arboles');
 console.log(fruta1);
+var fruta2 = new Manzana('manzana1', 'enero', 'vitE.vitC', 'rojo', 10, 'arboles');
+console.log(fruta2);
+var fruta3 = new Sandia('sandia1', 'primavera', 'vitA.B6', 'verde', 12, 'sobre tierra');
+console.log(fruta3);
+var resultado = fruta1 instanceof Fruta;
+console.log(resultado);
+var resultado1 = Manzana instanceof Fruta;
+console.log(resultado1);
+var resultado2 = fruta3 instanceof Sandia;
+console.log(resultado2);
+var resultado3 = Sandia instanceof Sandia;
+console.log(resultado3);
+var resultado4 = Mandarina instanceof Sandia;
+console.log(resultado4);
